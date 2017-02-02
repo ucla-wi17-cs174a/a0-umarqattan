@@ -25,7 +25,7 @@ git clone https://github.com/ucla-wi17-cs174a/a0-umarqattan.git
 
 ## API Reference
 
-THREE.js
+THREE.js and Code directly written from the Course Textbook.
 
 ## Tests
 
