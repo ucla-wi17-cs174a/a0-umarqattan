@@ -22,6 +22,7 @@ There is not much else to say other than that I learned how to implement the ren
 ## Installation
 
 git clone https://github.com/ucla-wi17-cs174a/a0-umarqattan.git
+
 Run index.html in FireFox, Chrome, or Safari.
 
 ## API Reference
