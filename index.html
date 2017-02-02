@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute vec4 vPosition;
+uniform vec4 vColor;
+varying vec4 fColor;
+uniform mat4 MvMatrix;
+uniform mat4 perspectiveMatrix;
+uniform float theta;
+
+void main() 
+{
+    
+    // [EXTRA CREDIT 4. ] Scale each of the cubes while the application is running. The scaleMatrix should vary by no more than twenty percent (20%) for their original size (scaleMatrix can be either smaller, larger or both, you decide). The cubes shall remain centered around their initial positions
+    float angle = radians( theta );
+    float scaleMatrixValue = 1.0 + (0.2*sin(angle)); // scaleMatrix is at least 1 but at most 1.2
+    
+
+    mat4 rotationMatrix = mat4( 1.0,  0.0,  0.0, 0.0,
+		            0.0,    cos(angle),    sin(angle), 0.0,
+		            0.0,   -sin(angle),    cos(angle), 0.0,
+		            0.0,  0.0,  0.0, 1.0 );
+
+    mat4 scaleMatrix = mat4( scaleMatrixValue, 0, 0, 0,
+                       0, scaleMatrixValue, 0, 0,
+                       0, 0, scaleMatrixValue, 0,
+                       0, 0, 0, 1);
+
+    fColor = vColor;
+
+    gl_Position = perspectiveMatrix * MvMatrix * rotationMatrix * scaleMatrix * vPosition;
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+   
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="webgl-utils.js"></script>
+<script type="text/javascript" src="initShaders.js"></script>
+<script type="text/javascript" src="MV.js"></script>
+<script type="text/javascript" src="cubies.js"></script>
+
+<body>
+
+
+
+<!-- 2. Set up a WebGL capable HTML canvas able to display without error. Its size should be at least 960x540 and should have the z-buffer enabled and cleared to a black background. Implement necessary shader codes without error – 5 points. -->
+
+<canvas id="gl-canvas" width="960"" height="540">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+</body>
+</html>
