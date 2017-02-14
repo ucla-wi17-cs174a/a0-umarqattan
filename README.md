@@ -27,7 +27,7 @@ Run index.html in FireFox, Chrome, or Safari.
 
 ## API Reference
 
-THREE.js
+JS Library
 
 ## Tests
 
